@@ -3,8 +3,8 @@ from mysql.connector import errorcode
 
 """ database config object """
 config = {
-    "user": "root",
-    "password": "Vamp!re77",
+    "user": "user",
+    "password": "password",
     "host": "127.0.0.1",
 
         "database": "movies",
