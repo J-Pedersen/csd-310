@@ -51,7 +51,25 @@ def show_films(cursor, title):
     # iterate over the film data set and display the results
     for film in films:
         print("Film Name: {}\nDirector: {}\nGenre Name ID: {}\nStudio Name: {}\n".format(film[0], film[1], film[2], film[3]))
+show_films(cursor, "DISPLAYING FILMS")
 
+
+cursor.execute("""INSERT  INTO film (film_id, film_name, film_releaseDate, film_runtime, film_director, studio_id, genre_id)
+                    VALUES (4,'Jurassic Park', '1993', 127, 'Steven Spielberg', 3, 2 );""")
+    # get the results from the cursor object
+films = cursor.fetchall() 
+show_films(cursor, "DISPLAYING FILMS AFTER INSERT")
+
+
+cursor.execute("""UPDATE film SET  genre_id = 1 WHERE film_name = 'Alien';""")
+    # get the results from the cursor object
+films = cursor.fetchall() 
+show_films(cursor, "DISPLAYING FILMS AFTER UPDATE- Changed Alien to Horror")
+
+
+cursor.execute("""DELETE FROM film WHERE film_name = 'Gladiator';""")
+    # get the results from the cursor object
+films = cursor.fetchall()
 show_films(cursor, "DISPLAYING FILMS AFTER DELETE")
 
 db.close()
